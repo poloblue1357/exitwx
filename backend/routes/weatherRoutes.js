@@ -2,11 +2,19 @@ import express from "express"
 import axios from "axios"
 import { parseStringPromise } from "xml2js"
 import { getWeatherByCoords } from "../helpers/weatherHelper.js";
+import { rateLimit } from 'express-rate-limit'
 
 const router = express.Router()
 
+const limiter = rateLimit({
+	windowMs: 60 * 60 * 1000, // 60 minutes
+	limit: 20, // Limit each IP to 10 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
 // GET  zip/lat,lon/city
-router.get("/", async (req, res) => {
+router.get("/", limiter, async (req, res) => {
     const { location } = req.query;
     let units = (req.query.units || 'imperial').trim()
 

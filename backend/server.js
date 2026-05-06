@@ -5,22 +5,19 @@ import exitRoutes from "./routes/exitRoutes.js"
 import weatherRoutes from "./routes/weatherRoutes.js"
 import 'dotenv/config'; 
 import geoRoutes from "./routes/geoRoutes.js"
-import { rateLimit } from 'express-rate-limit'
+import morgan from 'morgan'
 
 const app = express()
-
-const limiter = rateLimit({
-	windowMs: 60 * 60 * 1000, // 60 minutes
-	limit: 20, // Limit each IP to 10 requests per `window` (here, per 15 minutes)
-	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-})
 
 // Middleware
 app.use(cors())
 app.use(express.json())
-app.use("/api/exits",limiter, exitRoutes)
-app.use("/api/weather", limiter, weatherRoutes)
+
+// app.use(morgan(":method :url :status :response-time ms"))
+app.use(morgan("dev"))
+
+app.use("/api/exits", exitRoutes)
+app.use("/api/weather", weatherRoutes)
 app.use('/api/geo', geoRoutes)
 
 // MongoDB connection
