@@ -1,7 +1,7 @@
 import express from "express"
 import axios from "axios"
 import { parseStringPromise } from "xml2js"
-import { getWeatherByCoords } from "../helpers/weatherHelper.js";
+import { getWeatherByCoords } from "../helpers/weather.helper.js";
 import { rateLimit } from 'express-rate-limit'
 
 const router = express.Router()

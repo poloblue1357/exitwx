@@ -1,7 +1,7 @@
 import express from "express"
-import Exit from "../models/Exit.js"
+import Exit from "../models/exit.model.js"
 import axios from 'axios'
-import { getWeatherByCoords } from "../helpers/weatherHelper.js"
+import { getWeatherByCoords } from "../helpers/weather.helper.js"
 
 const router = express.Router()
 

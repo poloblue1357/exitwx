@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose"
-import exitRoutes from "./routes/exitRoutes.js"
-import weatherRoutes from "./routes/weatherRoutes.js"
+import exitRoutes from "./routes/exit.routes.js"
+import weatherRoutes from "./routes/weather.routes.js"
 import 'dotenv/config'; 
-import geoRoutes from "./routes/geoRoutes.js"
+import geoRoutes from "./routes/geoapify.routes.js"
 import morgan from 'morgan'
 import { Logtail } from "@logtail/node";
 
