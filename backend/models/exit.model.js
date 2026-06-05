@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const exitSchema = new mongoose.Schema({
 
-    id: { type: String },
+    // id: { type: String },
     slug: { type: String },
     telephone: { type: String },
     website: { type: String},
