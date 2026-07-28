@@ -84,7 +84,7 @@ function ExitSubmit() {
         const telephone = formData.telephone?.trim() ?? '';
         const website = formData.website?.trim() ?? '';
 
-        const postalRegex = /^[A-Za-z0-9\s\-]{3,10}$/;
+        const postalRegex = /^[A-Za-z0-9\s-]{3,10}$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phoneRegex = /^[+()0-9-\s]{7,20}$/;
         const websiteRegex = /^https?:\/\/.+\..+/i;
@@ -155,7 +155,7 @@ function ExitSubmit() {
     });
 
     return (
-        <div>
+        <div className="mb-4">
             {/* Instructional Subheader */}
             <div style={{
                 background: 'rgba(255,255,255,0.12)',
@@ -176,7 +176,6 @@ function ExitSubmit() {
                         <h3 style={{ color: 'white', fontSize: '15px', fontWeight: '600', margin: 0 }}>DZ / Exit Information</h3>
                         <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px' }}>* required</span>
                     </div>
-                   
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         <input
                             type="text"
@@ -335,24 +334,16 @@ function ExitSubmit() {
                     </div>
                 )}
 
-                {/* Submit Button - Gray text */}
+                {/* Submit Button */}
                 <button
                     type="submit"
                     disabled={loading}
                     style={{
+                        width: '100%', padding: '14px 0', borderRadius: 12, border: '2px solid #38383A',
                         background: '#2C2C2E',
-                        color: 'rgba(235,235,245,0.6)',
-                        border: '2px solid #38383A',
-                        borderRadius: '12px',
-                        padding: '16px',
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        cursor: 'pointer',
-                        width: '100%',
-                        transition: 'border-color 0.2s'
+                        color: 'white', fontWeight: 700, fontSize: 15, cursor: 'pointer',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                     }}
-                    onMouseEnter={(e) => e.target.style.borderColor = '#0A84FF'}
-                    onMouseLeave={(e) => e.target.style.borderColor = '#38383A'}
                 >
                     {loading ? 'Submitting…' : 'Submit the DZ / Exit Info'}
                 </button>

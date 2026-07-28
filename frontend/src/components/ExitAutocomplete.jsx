@@ -1,5 +1,5 @@
 function ExitAutocomplete({ setSelectedExit, setAutocompleteResults, searchLocation, setSearchInput, autocompleteResults }) {
-
+    // console.log("autocomplete results", autocompleteResults)
     return (
         <>
             {autocompleteResults?.length > 0 && (

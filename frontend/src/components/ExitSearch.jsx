@@ -115,7 +115,7 @@ function ExitSearch() {
 
         const timeout = setTimeout(async () => {
             const data = await fetchExitData(searchInput)
-            setAutocompleteResults(data)
+            setAutocompleteResults(data?.results || [])
         }, 200)
 
         return () => clearTimeout(timeout)
@@ -217,18 +217,21 @@ function ExitSearch() {
 
                     {/* Weather Content */}
                     {activeTab === 'current' ? (
-                        <WeatherCard 
-                            weatherInfo={weatherData.weather}
-                            lat={weatherData.weather.lat}
-                            lon={weatherData.weather.lon}
-                            isFavorite={isFavorite}
-                            onToggleFavorite={toggleFavorite}
-                        />
+                        <div className="mb-4">
+                            <WeatherCard 
+                                weatherInfo={weatherData.weather}
+                                lat={weatherData.weather.lat}
+                                lon={weatherData.weather.lon}
+                                isFavorite={isFavorite}
+                                onToggleFavorite={toggleFavorite}
+                            />
+                        </div>
                     ) : (
                         <Forecast 
                             forecastInfo={weatherData.forecast} 
                         />
                     )}
+
                 </>
             )}
         </div>

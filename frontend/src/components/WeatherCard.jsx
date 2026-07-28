@@ -2,6 +2,7 @@ import { Heart, Wind, Droplets, Sunrise, Sunset, MapPin, AlertCircle, MoveUp, Cl
 import MoonInfo from './MoonInfo';
 import { useApp } from '../hooks/useApp';
 import { useLocation } from "react-router-dom"
+import TideInfo from './TideInfo';
 
 // ── Apple dark tokens ──────────────────────────────────────────
 const T = {
@@ -284,6 +285,12 @@ export default function WeatherCard({
                         <div style={{ fontSize: 15, fontWeight: 600, ...T.textPrim }}>{weather.sunset}</div>
                     </div>
                 </div>
+
+                {/* Tide Info */}
+                <div style={{ padding: "24px 24px 0", paddingBottom: '12px' }}>
+                    <TideInfo weatherInfo={weather} lat={latitude} lon={longitude} />
+                </div>
+
 
                 {/* Favorite button */}
                 <div style={{ padding: "0 24px 24px" }}>
