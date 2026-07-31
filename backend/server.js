@@ -7,6 +7,7 @@ import 'dotenv/config';
 import geoRoutes from "./routes/geoapify.routes.js"
 import morgan from 'morgan'
 import { Logtail } from "@logtail/node";
+import tidesRoutes from "./routes/tides.routes.js"
 
 const app = express()
 
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 app.use("/api/exits", exitRoutes)
 app.use("/api/weather", weatherRoutes)
 app.use('/api/geo', geoRoutes)
+app.use('/api/tides', tidesRoutes)
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
