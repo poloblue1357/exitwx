@@ -115,7 +115,7 @@ function ExitSearch() {
 
         const timeout = setTimeout(async () => {
             const data = await fetchExitData(searchInput)
-            setAutocompleteResults(data?.results || [])
+            setAutocompleteResults(data?.results || data || [])
         }, 200)
 
         return () => clearTimeout(timeout)
