@@ -138,6 +138,7 @@ function ExitSearch() {
                                 boxSizing: 'border-box',
                                 outline: 'none'
                             }}
+                            className="focus:outline-none focus:ring-4 focus:ring-blue-300"
                             placeholder="Search by DZ or Exit name"
                             onChange={handleChange}
                             value={searchInput}

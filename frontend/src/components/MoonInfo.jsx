@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import * as SunCalc from 'suncalc';
 
 const T = {
@@ -25,46 +26,47 @@ const getMoonPhase = (phase) => {
 
 function MoonInfo({ weatherInfo, lat, lon }) {
     const dt = weatherInfo?.dt;
-    const localTime = dt ? new Date(dt * 1000) : new Date();
 
-    const illum = SunCalc.getMoonIllumination(localTime);
+    const localTime = useMemo(() => dt ? new Date(dt * 1000) : new Date(), [dt]);
+
+    const illum = useMemo(() => SunCalc.getMoonIllumination(localTime), [localTime]);
+    const times = useMemo(() => lat && lon ? SunCalc.getMoonTimes(localTime, lat, lon) : {}, [localTime, lat, lon]);
+
     const percent = Math.round(illum.fraction * 100);
-    const times = lat && lon ? SunCalc.getMoonTimes(localTime, lat, lon) : {};
-
     const moonPhase = getMoonPhase(illum.phase);
 
     return (
-    <div style={T.wrap}>
+        <div style={T.wrap}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
-        {/* Moon emoji + phase name */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 90 }}>
-            <div style={{ fontSize: 44, lineHeight: 1, marginBottom: 6 }}>{moonPhase.emoji}</div>
-            <div style={{ ...T.label, fontSize: 12, textAlign: "center" }}>{moonPhase.name}</div>
-        </div>
+            {/* Moon emoji + phase name */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 90 }}>
+                <div style={{ fontSize: 44, lineHeight: 1, marginBottom: 6 }}>{moonPhase.emoji}</div>
+                <div style={{ ...T.label, fontSize: 12, textAlign: "center" }}>{moonPhase.name}</div>
+            </div>
 
-        {/* Illumination */}
-        <div style={{ flex: 1, textAlign: "center", padding: "0 12px" }}>
+            {/* Illumination */}
+            <div style={{ flex: 1, textAlign: "center", padding: "0 12px" }}>
             <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4, color: "rgba(235,235,245,0.5)" }}>
                 Illumination
             </div>
             <div style={{ fontSize: 26, fontWeight: 700, ...T.value }}>{percent}%</div>
-        </div>
+            </div>
 
-        {/* Rise / Set */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 80, alignItems: "flex-end" }}>
+            {/* Rise / Set */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 80, alignItems: "flex-end" }}>
             <div>
-            <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonrise</div>
-            <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.rise)}</div>
-        </div>
-        <div>
-            <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonset</div>
-            <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.set)}</div>
-        </div>
-        </div>
+                <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonrise</div>
+                <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.rise)}</div>
+            </div>
+            <div>
+                <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonset</div>
+                <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.set)}</div>
+            </div>
+            </div>
 
         </div>
-    </div>
+        </div>
     );
 }
 

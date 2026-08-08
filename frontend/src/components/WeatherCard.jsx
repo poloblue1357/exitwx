@@ -288,7 +288,7 @@ export default function WeatherCard({
 
                 {/* Tide Info */}
                 <div style={{ padding: "24px 24px 0", paddingBottom: '12px' }}>
-                    <TideInfo weatherInfo={weather} lat={latitude} lon={longitude} />
+                    <TideInfo lat={latitude} lon={longitude} />
                 </div>
 
 

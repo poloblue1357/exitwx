@@ -2,7 +2,7 @@ import tideMock from "../mock/tides.json";
 import { fetchTidesData } from "../api/tidesAPI";
 import { useState, useEffect } from 'react'
 
-function TideInfo({weatherInfo, lat, lon}) {
+function TideInfo({ lat, lon }) {
 
     
 
