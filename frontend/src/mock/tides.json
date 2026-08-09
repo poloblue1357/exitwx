@@ -1,54 +1,61 @@
 {
     "status": 200,
     "callCount": 1,
-    "copyright": "Tidal data retrieved from www.worldtides.info. Copyright (c) 2014-2026 Brainware LLC. Licensed for use of individual spatial coordinates on behalf of/by an end-user. Generated using AVISO+ FES2022 produced by Noveltis, Legos and CLS and distributed by Aviso+, with support from CNES. NO GUARANTEES ARE MADE ABOUT THE CORRECTNESS OF THIS DATA. You may not use it if anyone or anything could come to harm as a result of using it (e.g. for navigational purposes).",
-    "requestLat": 35.1427533,
-    "requestLon": -120.6412827,
-    "responseLat": 35,
-    "responseLon": -120.833,
-    "atlas": "FES2022",
-    "timezone": "Etc/GMT-8",
+    "copyright": "Tidal data retrieved from www.worldtides.info. Copyright (c) 2014-2026 Brainware LLC. Licensed for use of individual spatial coordinates on behalf of/by an end-user. Source data created by the Center for Operational Oceanographic Products and Services (CO-OPS) and is not subject to copyright protection. NO GUARANTEES ARE MADE ABOUT THE CORRECTNESS OF THIS DATA. You may not use it if anyone or anything could come to harm as a result of using it (e.g. for navigational purposes).",
+    "requestLat": 25.7826,
+    "requestLon": -80.1341,
+    "responseLat": 25.7683,
+    "responseLon": -80.1317,
+    "atlas": "NOAA",
+    "station": "Miami Beach (city pier), Florida",
+    "timezone": "America/New_York",
     "extremes": [
         {
-            "dt": 1785211800,
-            "date": "2026-07-27T21:10:00-07:00",
-            "height": 0.885,
-            "type": "High"
-        },
-        {
-            "dt": 1785238890,
-            "date": "2026-07-28T04:41:30-07:00",
-            "height": -1.008,
+            "dt": 1786245951,
+            "date": "2026-08-08T23:25:51-04:00",
+            "height": -0.288,
             "type": "Low"
         },
         {
-            "dt": 1785262980,
-            "date": "2026-07-28T11:23:00-07:00",
-            "height": 0.226,
+            "dt": 1786267471,
+            "date": "2026-08-09T05:24:31-04:00",
+            "height": 0.342,
             "type": "High"
         },
         {
-            "dt": 1785277980,
-            "date": "2026-07-28T15:33:00-07:00",
-            "height": -0.073,
+            "dt": 1786290690,
+            "date": "2026-08-09T11:51:30-04:00",
+            "height": -0.48,
             "type": "Low"
         },
         {
-            "dt": 1785300270,
-            "date": "2026-07-28T21:44:30-07:00",
-            "height": 0.901,
+            "dt": 1786314204,
+            "date": "2026-08-09T18:23:24-04:00",
+            "height": 0.407,
             "type": "High"
         },
         {
-            "dt": 1785327030,
-            "date": "2026-07-29T05:10:30-07:00",
-            "height": -1.013,
+            "dt": 1786336204,
+            "date": "2026-08-10T00:30:04-04:00",
+            "height": -0.335,
             "type": "Low"
         },
         {
-            "dt": 1785350790,
-            "date": "2026-07-29T11:46:30-07:00",
-            "height": 0.249,
+            "dt": 1786357817,
+            "date": "2026-08-10T06:30:17-04:00",
+            "height": 0.386,
+            "type": "High"
+        },
+        {
+            "dt": 1786380791,
+            "date": "2026-08-10T12:53:11-04:00",
+            "height": -0.512,
+            "type": "Low"
+        },
+        {
+            "dt": 1786404027,
+            "date": "2026-08-10T19:20:27-04:00",
+            "height": 0.452,
             "type": "High"
         }
     ]
