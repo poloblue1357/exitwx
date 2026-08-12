@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 
 function TideInfo({ lat, lon }) {
 
-    const [ tide, setTide ] = useState('')
-    const [ nextTide, setNextTide ] = useState('')
+    const [ tide, setTide ] = useState(null)
 
     useEffect(() => {
+        console.log("tide req", lat, lon)
 
         async function fetchTide() {
             try {
@@ -17,8 +17,8 @@ function TideInfo({ lat, lon }) {
                 if (!data) throw new Error("This lat,lon has no data")
 
                 setTide(data)
-                console.log(tide)
-    
+                console.log(data)
+     
             } catch (error) {
                 console.log("Tides API failed", error)
             }
