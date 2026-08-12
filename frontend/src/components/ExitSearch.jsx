@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import WeatherCard from "../components/WeatherCard";
 import Forecast from "../components/Forecast";
-import { fetchExitData, fetchExitWeather } from "../api/exitAPI"
+import { fetchExitWeather } from "../api/exitAPI"
 import Spinner from "../components/Spinner"
 import ExitAutocomplete from "./ExitAutocomplete";
 import { useApp } from '../hooks/useApp';
@@ -15,7 +15,6 @@ const T = {
 
 function ExitSearch() {
     const [searchInput, setSearchInput] = useState('')
-    const [selectedExit, setSelectedExit] = useState('')
     const [activeTab, setActiveTab] = useState('current')
     const [loading, setLoading] = useState(false)
     const [autocompleteResults, setAutocompleteResults] = useState([])
@@ -94,7 +93,6 @@ function ExitSearch() {
             updateExitWeather(modifiedData)
             setAutocompleteResults([])
             setSearchInput('')
-            setSelectedExit('')
 
         } catch (err) {
             console.error(err)
@@ -104,22 +102,7 @@ function ExitSearch() {
         }
     }
 
-    useEffect(() => {
-        if (!searchInput || searchInput.length <= 2) {
-            setAutocompleteResults([])
-            return
-        }
 
-        // 🚫 don't refetch when user just selected something
-        if (searchInput === selectedExit) return
-
-        const timeout = setTimeout(async () => {
-            const data = await fetchExitData(searchInput)
-            setAutocompleteResults(data?.results || data || [])
-        }, 200)
-
-        return () => clearTimeout(timeout)
-    }, [searchInput, selectedExit])
 
     return (
         <div>
@@ -177,7 +160,6 @@ function ExitSearch() {
                         searchLocation={searchLocation}
                         setAutocompleteResults={setAutocompleteResults}
                         setSearchInput={setSearchInput}
-                        setSelectedExit={setSelectedExit}
                     />
                 </div>
             </div>

@@ -2,12 +2,14 @@
 
 export const fetchTidesData = async (lat, lon) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
     const params = new URLSearchParams ({
         lat, 
         lon,
     })
 
-    const url = `/api/tides?${params}`
+    const url = `${API_URL}/api/tides?${params}`
 
     try {
         const response = await fetch(url)
