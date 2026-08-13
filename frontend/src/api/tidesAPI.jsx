@@ -2,9 +2,9 @@
 
 export const fetchTidesData = async (lat, lon) => {
 
-    // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
-    const API_URL = 'https://weatherapp-cp4l.onrender.com'
+    // const API_URL = 'https://weatherapp-cp4l.onrender.com'
 
     const params = new URLSearchParams ({
         lat, 
@@ -26,6 +26,6 @@ export const fetchTidesData = async (lat, lon) => {
 
     } catch (error) {
         console.error('Tides API fetch failed', error)
-        return null
+        throw error
     }
 }
