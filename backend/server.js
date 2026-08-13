@@ -23,20 +23,20 @@ app.use(express.json())
 app.use(morgan("dev"))
 
 // Logtail middleware
-app.use((req, res, next) => {
-    const start = Date.now();
+// app.use((req, res, next) => {
+//     const start = Date.now();
 
-    res.on("finish", () => {
-        logtail.info("HTTP request", {
-        method: req.method,
-        url: req.originalUrl,
-        status: res.statusCode,
-        responseTime: `${Date.now() - start}ms`,
-        });
-    });
+//     res.on("finish", () => {
+//         logtail.info("HTTP request", {
+//         method: req.method,
+//         url: req.originalUrl,
+//         status: res.statusCode,
+//         responseTime: `${Date.now() - start}ms`,
+//         });
+//     });
 
-    next();
-});
+//     next();
+// });
 
 app.use("/api/exits", exitRoutes)
 app.use("/api/weather", weatherRoutes)
