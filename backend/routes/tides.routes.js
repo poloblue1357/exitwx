@@ -18,8 +18,9 @@ router.get('/', async (req, res) => {
         res.json(response.data)
 
     } catch (error) {
-        console.error('Tides API error', error.response?.data || error.message)
-        res.status(500).json({ error: 'Failed to fetch tide data' })
+        const errorDetails = error.response?.data || error.message
+        console.error('Tides API error', errorDetails)
+        res.status(500).json({ error: 'Failed to fetch tide data', details: errorDetails })
     }
 })
 
