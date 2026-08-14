@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
         const apiKey = process.env.WORLD_TIDES_API_KEY
         const url = `https://www.worldtides.info/api/v3?extremes&localtime&lat=${lat}&lon=${lon}&key=${apiKey}`
-
+        console.log("DEBUG: Key being used:", JSON.stringify(process.env.WORLD_TIDES_API_KEY));
         const response = await axios.get(url)
         res.json(response.data)
 
