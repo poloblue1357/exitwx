@@ -36,24 +36,23 @@ function TideInfo({ lat, lon }) {
             const afterThat = data.extremes.find(e => new Date(e.date) > new Date(upcoming.date));
 
             setCurrentTide({
-            direction: getTideDirection(upcoming.type),
-            type: upcoming.type,
-            height: toFeet(upcoming.height),
-            time: formatTime(upcoming.date),
+                direction: getTideDirection(upcoming.type),
+                type: upcoming.type,
+                height: toFeet(upcoming.height),
+                time: formatTime(upcoming.date),
             });
 
             if (afterThat) {
-            setNextTide({
-                direction: getTideDirection(afterThat.type),
-                type: afterThat.type,
-                height: toFeet(afterThat.height),
-                time: formatTime(afterThat.date),
-            });
+                setNextTide({
+                    direction: getTideDirection(afterThat.type),
+                    type: afterThat.type,
+                    height: toFeet(afterThat.height),
+                    time: formatTime(afterThat.date),
+                });
+            }} catch (err) {
+                console.error("Tides API failed:", err);
+                setError(err.message);
             }
-        } catch (err) {
-            console.error("Tides API failed:", err);
-            setError(err.message);
-        }
         }
 
         fetchTide();

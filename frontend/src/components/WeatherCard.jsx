@@ -19,10 +19,16 @@ const T = {
     gray:      { background: "rgba(235,235,245,0.08)", border: "1px solid rgba(235,235,245,0.12)" },
     teal:      { background: "rgba(90,200,250,0.15)",  border: "1px solid rgba(90,200,250,0.25)" },
     mint:      { background: "rgba(99,230,185,0.15)",  border: "1px solid rgba(99,230,185,0.25)" },
+    red:       { background: "rgba(255,59,48,0.15)",   border: "1px solid rgba(255,59,48,0.25)" },
+    pink:      { background: "rgba(255,55,95,0.15)",   border: "1px solid rgba(255,55,95,0.25)" },
+    brown:     { background: "rgba(162,132,94,0.15)",  border: "1px solid rgba(162,132,94,0.25)" },
     blueText:  { color: "#64D2FF" },
     yellowText:{ color: "#FFD60A" },
     tealText:  { color: "#5AC8FA" },
     mintText:  { color: "#63E6B9" },
+    redText:   { color: "#FF3B30" },
+    pinkText:  { color: "#FF375F" },
+    brownText: { color: "#A28456" },
 };
 
 // ── Weather-based header gradients (mapped by OWM condition code) ──
@@ -226,9 +232,9 @@ export default function WeatherCard({
                                 <div style={{ fontSize: 11, ...T.textSec, marginBottom: 4 }}>Speed</div>
                                 <div style={{ fontSize: 20, fontWeight: 700, ...T.blueText }}>{weather.windSpeed} <span style={{ fontSize: 13, fontWeight: 400 }}>mph</span></div>
                             </div>
-                            <div style={{ ...T.yellow, borderRadius: 12, padding: 12 }}>
+                            <div style={{ ...T.red, borderRadius: 12, padding: 12 }}>
                                 <div style={{ fontSize: 11, ...T.textSec, marginBottom: 4 }}>Gusts</div>
-                                <div style={{ fontSize: 20, fontWeight: 700, ...T.yellowText }}>{displayGust(weather.windGusts, weather.windSpeed)}</div>
+                                <div style={{ fontSize: 20, fontWeight: 700, ...T.redText }}>{displayGust(weather.windGusts, weather.windSpeed)}</div>
                             </div>
                         </div>
                     </div>
@@ -238,9 +244,9 @@ export default function WeatherCard({
                 {/* Detail cards — 2x2 grid */}
                 <div style={{ padding: 24, paddingBottom: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                     <DetailCard
-                        icon={<Droplets style={{ width: 18, height: 18, color: "#0A84FF" }} />}
+                        icon={<Droplets style={{ width: 18, height: 18, color: "#A28456" }} />}
                         label="Humidity" value={`${weather.humidity}%`}
-                        tint={T.blue} textColor={T.blueText}
+                        tint={T.brown} textColor={T.brownText}
                     />
                     <DetailCard
                         icon={<Wind style={{ width: 18, height: 18, color: "rgba(235,235,245,0.7)" }} />}
@@ -261,19 +267,15 @@ export default function WeatherCard({
                         tint={T.mint} textColor={T.mintText}
                     />
                     <DetailCard
-                        icon={<Cloud style={{ width: 18, height: 18, color: "#5AC8FA" }} />}
+                        icon={<Cloud style={{ width: 18, height: 18, color: "#FFD60A" }} />}
                         label="Cloud Cover" value={`${weather.cloudCover}%`}
-                        tint={T.teal} textColor={T.tealText}
+                        tint={T.yellow} textColor={T.yellowText}
                     />
                 </div>
 
-                {/* Moon info */}
-                <div style={{ padding: "24px 24px 0", paddingBottom: '12px' }}>
-                    <MoonInfo weatherInfo={weather} lat={latitude} lon={longitude} />
-                </div>
 
                 {/* Sunrise / Sunset */}
-                <div style={{ padding: '12px 24px', paddingBottom: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div style={{ padding: '12px 24px', paddingBottom: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                     <div style={{ ...T.orange, borderRadius: 12, padding: 16 }}>
                         <Sunrise style={{ width: 22, height: 22, color: "#FF9F0A", marginBottom: 8 }} />
                         <div style={{ fontSize: 15, fontWeight: 500, ...T.textSec }}>Sunrise</div>
@@ -286,6 +288,10 @@ export default function WeatherCard({
                     </div>
                 </div>
 
+                {/* Moon info */}
+                <div style={{ padding: "16px 24px" }}>
+                    <MoonInfo weatherInfo={weather} lat={latitude} lon={longitude} />
+                </div>
                 {/* Tide Info */}
                 <TideInfo lat={latitude} lon={longitude} />
 
