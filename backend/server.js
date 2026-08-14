@@ -40,9 +40,8 @@ app.use(morgan("dev"))
 
 app.use("/api/exits", exitRoutes)
 app.use("/api/weather", weatherRoutes)
+app.use('/api/tides', tidesRoutes) 
 app.use('/api/geo', geoRoutes)
-app.use('/api/tides', tidesRoutes)
-console.log('Tides route registered') 
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)

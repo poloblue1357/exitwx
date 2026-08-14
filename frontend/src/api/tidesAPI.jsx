@@ -2,6 +2,7 @@
 
 export const fetchTidesData = async (lat, lon) => {
 
+    console.log("fetch tides api function is running")
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
     // const API_URL = 'https://weatherapp-cp4l.onrender.com'
@@ -14,7 +15,9 @@ export const fetchTidesData = async (lat, lon) => {
     const url = `${API_URL}/api/tides?${params}`
 
     try {
+        
         const response = await fetch(url)
+        console.log("fetch just ran")
 
         if(!response.ok) {
             const errText = await response.text();
