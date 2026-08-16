@@ -1,62 +1,42 @@
 {
-    "status": 200,
-    "callCount": 1,
-    "copyright": "Tidal data retrieved from www.worldtides.info. Copyright (c) 2014-2026 Brainware LLC. Licensed for use of individual spatial coordinates on behalf of/by an end-user. Source data created by the Center for Operational Oceanographic Products and Services (CO-OPS) and is not subject to copyright protection. NO GUARANTEES ARE MADE ABOUT THE CORRECTNESS OF THIS DATA. You may not use it if anyone or anything could come to harm as a result of using it (e.g. for navigational purposes).",
-    "requestLat": 25.7826,
-    "requestLon": -80.1341,
-    "responseLat": 25.7683,
-    "responseLon": -80.1317,
-    "atlas": "NOAA",
-    "station": "Miami Beach (city pier), Florida",
-    "timezone": "America/New_York",
-    "extremes": [
+    "data": [
         {
-            "dt": 1786245951,
-            "date": "2026-08-08T23:25:51-04:00",
-            "height": -0.288,
-            "type": "Low"
+            "height": 0.6004726784172861,
+            "time": "2026-08-16T07:44:00+00:00",
+            "type": "high"
         },
         {
-            "dt": 1786267471,
-            "date": "2026-08-09T05:24:31-04:00",
-            "height": 0.342,
-            "type": "High"
+            "height": -0.612539293117479,
+            "time": "2026-08-16T14:00:00+00:00",
+            "type": "low"
         },
         {
-            "dt": 1786290690,
-            "date": "2026-08-09T11:51:30-04:00",
-            "height": -0.48,
-            "type": "Low"
+            "height": 0.7324973379427892,
+            "time": "2026-08-16T20:27:00+00:00",
+            "type": "high"
         },
         {
-            "dt": 1786314204,
-            "date": "2026-08-09T18:23:24-04:00",
-            "height": 0.407,
-            "type": "High"
-        },
-        {
-            "dt": 1786336204,
-            "date": "2026-08-10T00:30:04-04:00",
-            "height": -0.335,
-            "type": "Low"
-        },
-        {
-            "dt": 1786357817,
-            "date": "2026-08-10T06:30:17-04:00",
-            "height": 0.386,
-            "type": "High"
-        },
-        {
-            "dt": 1786380791,
-            "date": "2026-08-10T12:53:11-04:00",
-            "height": -0.512,
-            "type": "Low"
-        },
-        {
-            "dt": 1786404027,
-            "date": "2026-08-10T19:20:27-04:00",
-            "height": 0.452,
-            "type": "High"
+            "height": -0.4346210411781809,
+            "time": "2026-08-17T02:51:00+00:00",
+            "type": "low"
         }
-    ]
+    ],
+    "meta": {
+        "cost": 1,
+        "dailyQuota": 10,
+        "datum": "MSL",
+        "end": "2026-08-17 04:00",
+        "lat": 35.1427,
+        "lng": -120.6413,
+        "offset": 0,
+        "requestCount": 1,
+        "start": "2026-08-16 04:00",
+        "station": {
+            "distance": 11,
+            "lat": 35.168888,
+            "lng": -120.754166,
+            "name": "port san luis",
+            "source": "noaa"
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import { Heart, Wind, Droplets, Sunrise, Sunset, MapPin, AlertCircle, MoveUp, Cloud, Thermometer } from 'lucide-react';
+import { Heart, Wind, Droplets, Sunrise, Sunset, MapPin, AlertCircle, MoveUp, Cloud, Thermometer, ChevronsUp, ChevronsRight } from 'lucide-react';
 import MoonInfo from './MoonInfo';
 import { useApp } from '../hooks/useApp';
 import { useLocation } from "react-router-dom"
@@ -228,13 +228,25 @@ export default function WeatherCard({
 
                         {/* Speed + gusts — equal half */}
                         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 10 }}>
+                            {/* Speed */}
                             <div style={{ ...T.blue, borderRadius: 12, padding: 12 }}>
-                                <div style={{ fontSize: 11, ...T.textSec, marginBottom: 4 }}>Speed</div>
-                                <div style={{ fontSize: 20, fontWeight: 700, ...T.blueText }}>{weather.windSpeed} <span style={{ fontSize: 13, fontWeight: 400 }}>mph</span></div>
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                                    <ChevronsRight style={{ width: 16, height: 16, color: "#64D2FF" }} />
+                                    <div style={{ fontSize: 11, ...T.textSec }}>Speed</div>
+                                </div>
+                                <div style={{ fontSize: 20, fontWeight: 700, ...T.blueText }}>{weather.windSpeed} 
+                                    <span style={{ fontSize: 13, fontWeight: 400 }}>mph</span>
+                                </div>
                             </div>
+
+                            {/* Gusts */}
                             <div style={{ ...T.red, borderRadius: 12, padding: 12 }}>
-                                <div style={{ fontSize: 11, ...T.textSec, marginBottom: 4 }}>Gusts</div>
-                                <div style={{ fontSize: 20, fontWeight: 700, ...T.redText }}>{displayGust(weather.windGusts, weather.windSpeed)}</div>
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                                    <ChevronsUp style={{ width: 16, height: 16, color: "#FF3B30" }} />
+                                    <div style={{ fontSize: 11, ...T.textSec }}>Gusts</div>
+                                </div>
+                                <div style={{ fontSize: 20, fontWeight: 700, ...T.redText }}>{displayGust(weather.windGusts, weather.windSpeed)}
+                                </div>
                             </div>
                         </div>
                     </div>
