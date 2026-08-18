@@ -5,7 +5,8 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        const { lat, lng } = req.query
+        const { lat, lng, timezone } = req.query
+
         const now = new Date()
         const end = new Date(now)
         end.setHours(end.getHours() + 24)
@@ -30,7 +31,37 @@ router.get('/', async (req, res) => {
                 }
             })
 
-        res.json(response.data)
+        const jsonData = response.data.data
+
+        const formatTideTime = (tideTime, timezone) => {
+            const localDate = new Date(
+                new Date(tideTime).getTime() + Number(timezone) * 1000
+            )
+
+            return localDate.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                timeZone: 'UTC'
+            })
+        }
+        
+        const tide = {
+            current: {
+                status: jsonData[0].type === 'high' ? 'Rising' : 'Falling'
+            },
+            next: {
+                height: Number((jsonData[0].height * 3.28084).toFixed(2)),
+                type: jsonData[0].type,
+                time: formatTideTime(jsonData[0].time, timezone)
+            },
+            following: {
+                height: Number((jsonData[1].height * 3.28084).toFixed(2)),
+                type: jsonData[1].type,
+                time: formatTideTime(jsonData[1].time, timezone)
+            }
+        }
+
+        res.json(tide)
 
     } catch (error) {
         const errorDetails = error.response?.data || error.message

@@ -16,7 +16,7 @@ const WaveIcon = () => (
     </svg>
 );
 
-function TideInfo({ lat, lon }) {
+function TideInfo({ lat, lon, timezone }) {
     const [currentTide, setCurrentTide] = useState(null);
     const [nextTide, setNextTide] = useState(null);
     const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ function TideInfo({ lat, lon }) {
 
         async function fetchTide() {
         try {
-            const data = await fetchTidesData(lat, lon);
+            const data = await fetchTidesData(lat, lon, timezone);
             if (!data) throw new Error("No tide data for this location");
 
             const now = new Date();

@@ -305,7 +305,7 @@ export default function WeatherCard({
                     <MoonInfo weatherInfo={weather} lat={latitude} lon={longitude} />
                 </div>
                 {/* Tide Info */}
-                <TideInfo lat={latitude} lon={longitude} />
+                <TideInfo timezone={weather.timezone} lat={latitude} lon={longitude} />
 
 
                 {/* Favorite button */}
