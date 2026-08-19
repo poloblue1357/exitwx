@@ -6,6 +6,8 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     try {
         const { lat, lng, timezone } = req.query
+        console.log("TIDE QUERY:", req.query);
+        console.log("TIDE ROUTE FILE IS RUNNING");
 
         const now = new Date()
         const end = new Date(now)
