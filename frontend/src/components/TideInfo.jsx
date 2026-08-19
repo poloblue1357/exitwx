@@ -21,7 +21,8 @@ function TideInfo({ lat, lon, timezone }) {
                 const data = await fetchTidesData(lat, lon, timezone);
                 if (!data) throw new Error("No tide data for this location");
 
-                setTide(data)
+                setError(null);
+                setTide(data);
 
             } catch (err) {
                 console.error("Tides API failed:", err);
@@ -48,7 +49,7 @@ function TideInfo({ lat, lon, timezone }) {
 
             <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.6)", marginBottom: 8 }}>Next {tide.current.status} tide</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.next.type}</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.next.type.charAt(0).toUpperCase() + tide.next.type.slice(1)}</div>
                 <div style={{ marginBottom: 6 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Time</div>
                 <div style={{ fontSize: 15, fontWeight: 600, color: "rgba(235,235,245,0.9)" }}>{tide.next.time}</div>
@@ -64,7 +65,7 @@ function TideInfo({ lat, lon, timezone }) {
             {tide.following && (
                 <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.6)", marginBottom: 8 }}>Then {tide.current.status === 'high' ? 'Falling' : 'Rising'} tide</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.following.type}</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.following.type.charAt(0).toUpperCase() + tide.following.type.slice(1)}</div>
                 <div style={{ marginBottom: 6 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Time</div>
                     <div style={{ fontSize: 15, fontWeight: 600, color: "rgba(235,235,245,0.9)" }}>{tide.following.time}</div>

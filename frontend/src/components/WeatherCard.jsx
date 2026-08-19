@@ -304,6 +304,7 @@ export default function WeatherCard({
                 <div style={{ padding: "16px 24px" }}>
                     <MoonInfo weatherInfo={weather} lat={latitude} lon={longitude} />
                 </div>
+                
                 {/* Tide Info */}
                 <TideInfo timezone={weather.timezone} lat={latitude} lon={longitude} />
 
