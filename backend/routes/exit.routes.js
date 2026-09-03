@@ -2,6 +2,8 @@ import express from "express"
 import Exit from "../models/exit.model.js"
 import axios from 'axios'
 import { getWeatherByCoords } from "../helpers/weather.helper.js"
+import { Location, validateData } from "../../validation/validation.js"
+
 
 const router = express.Router()
 
@@ -22,7 +24,8 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+// Add validateData(Location) right here before the async function
+router.post("/", validateData(Location), async (req, res) => {
     console.log("Received data:", req.body);  // Log the incoming data
     const { id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source } = req.body;
     const location = new Exit({ id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source });

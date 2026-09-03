@@ -1,7 +1,6 @@
-import { z } from "zod";
+const { z } = require("zod");
 
 const Location = z.object({
-
     // required fields
     name: z.string(),
     lat: z.number(),
@@ -19,5 +18,25 @@ const Location = z.object({
     // optional formatted fields
     email: z.union([z.string().email(), z.literal('')]).nullish(),
     website: z.union([z.string().url(), z.literal('')]).nullish(),
+});
 
-})
+const validateData = (schema) => {
+    return (req, res, next) => {
+        const result = schema.safeParse(req.body);
+
+        if (!result.success) {
+            return res.status(400).json({
+                error: 'Validation failed',
+                details: result.error.errors
+            });
+        }
+
+        req.body = result.data;
+        next();
+    };
+};
+
+module.exports = {
+    Location, 
+    validateData
+};
