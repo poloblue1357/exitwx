@@ -57,8 +57,9 @@ router.get('/weather', async (req, res) => {
     const { query } = req.query
 
     try {
+        // First try exact case-insensitive match
         const exit = await Exit.findOne({
-            name: { $regex: query, $options: 'i'}
+            name: { $regex: `^${query.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&")}$`, $options: 'i'}
         })
 
         if(!exit) {
