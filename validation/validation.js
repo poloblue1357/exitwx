@@ -1,10 +1,10 @@
-const { z } = require("zod");
+import { z } from "zod";
 
 const Location = z.object({
     // required fields
-    name: z.string(),
-    lat: z.number(),
-    lon: z.number(),
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    lat: z.number().min(-90, "Latitude must be at least -90").max(90, "Latitude must be at most 90"),
+    lon: z.number().min(-180, "Longitude must be at least -180").max(180, "Longitude must be at most 180"),
 
     // optional fields
     id: z.string().nullish(),
@@ -36,7 +36,7 @@ const validateData = (schema) => {
     };
 };
 
-module.exports = {
+export {
     Location, 
     validateData
 };
