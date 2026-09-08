@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Search, Heart, Wind, MapPin } from 'lucide-react';
+import { Search, Heart, Wind } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ParachuteIcon from '../assets/parachute-parachutist-svgrepo-com.svg';
 
 function Home() {
     return (
@@ -46,7 +47,9 @@ function Home() {
                         className="w-full bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
                     >
                         <span className="flex items-center gap-3">
-                            <MapPin className="w-5 h-5" />
+                            <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
+                                <img src={ParachuteIcon} alt="Parachute" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)' }} />
+                            </div>
                             Dropzones & Exits
                         </span>
                         <span className="text-2xl">→</span>
@@ -58,7 +61,9 @@ function Home() {
                         className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
                     >
                         <span className="flex items-center gap-3">
-                            <Heart className="w-5 h-5" />
+                            <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
+                                <Heart className="w-5 h-5 text-white" />
+                            </div>
                             My Favorites
                         </span>
                         <span className="text-2xl">→</span>
