@@ -40,9 +40,9 @@ function MoonInfo({ weatherInfo, lat, lon }) {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
             {/* Moon emoji + phase name */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 90 }}>
-                <div style={{ fontSize: 44, lineHeight: 1, marginBottom: 6 }}>{moonPhase.emoji}</div>
-                <div style={{ ...T.label, fontSize: 12, textAlign: "center" }}>{moonPhase.name}</div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minWidth: 90, gap: 4 }}>
+                <div style={{ fontSize: 44, lineHeight: 1.2, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}>{moonPhase.emoji}</div>
+                <div style={{ ...T.label, fontSize: 12, textAlign: "center", whiteSpace: "normal" }}>{moonPhase.name}</div>
             </div>
 
             {/* Illumination */}
