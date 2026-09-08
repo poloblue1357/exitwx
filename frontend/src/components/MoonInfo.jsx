@@ -40,7 +40,7 @@ function MoonInfo({ weatherInfo, lat, lon }) {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
             {/* Moon emoji + phase name */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minWidth: 90, gap: 4 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, gap: 4 }}>
                 <div style={{ fontSize: 44, lineHeight: 1.2, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}>{moonPhase.emoji}</div>
                 <div style={{ ...T.label, fontSize: 12, textAlign: "center", whiteSpace: "normal" }}>{moonPhase.name}</div>
             </div>
@@ -54,13 +54,13 @@ function MoonInfo({ weatherInfo, lat, lon }) {
             </div>
 
             {/* Rise / Set */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 80, alignItems: "flex-end" }}>
-            <div>
-                <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonrise</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <div style={{ textAlign: "center" }}>
+                <div style={{ ...T.label, fontSize: 11 }}>Moonrise</div>
                 <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.rise)}</div>
             </div>
-            <div>
-                <div style={{ ...T.label, fontSize: 11, textAlign: "right" }}>Moonset</div>
+            <div style={{ textAlign: "center" }}>
+                <div style={{ ...T.label, fontSize: 11 }}>Moonset</div>
                 <div style={{ fontSize: 14, fontWeight: 600, ...T.times }}>{formatTime(times.set)}</div>
             </div>
             </div>
