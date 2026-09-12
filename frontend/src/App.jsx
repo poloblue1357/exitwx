@@ -6,6 +6,8 @@ import Exits from './pages/Exits';
 import Search from './pages/Search';
 import { AppProvider } from './context/AppContext';
 import Forecast from "./components/Forecast"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/exits" element={<Exits />} />
             <Route path="/forecast" element={<Forecast />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
       </div>
