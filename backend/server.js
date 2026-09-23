@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose"
 import exitRoutes from "./routes/exit.routes.js"
 import weatherRoutes from "./routes/weather.routes.js"
+import authRoutes from "./routes/auth.routes.js"
 import 'dotenv/config'; 
 import geoRoutes from "./routes/geoapify.routes.js"
 import morgan from 'morgan'
@@ -42,6 +43,7 @@ app.use("/api/exits", exitRoutes)
 app.use("/api/weather", weatherRoutes)
 app.use('/api/tides', tidesRoutes) 
 app.use('/api/geo', geoRoutes)
+app.use('/api/auth', authRoutes)
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)

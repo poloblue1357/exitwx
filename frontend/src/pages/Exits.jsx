@@ -1,8 +1,9 @@
 import NavBar from "../components/NavBar";
 import Header from "../components/Header"
 import ExitSubmit from "../components/ExitSubmit"
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import ExitSearch from "../components/ExitSearch";
+import { AuthContext } from "../context/AuthContext";
 
 
 const T = {
@@ -13,32 +14,35 @@ const T = {
 
 function Exits() {
     const [activeTab, setActiveTab] = useState('search')
+    const { user } = useContext(AuthContext)
    
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500">
             <Header title="Dropzones & Exits" showBackButton={false} />
            
             <div className="flex-1 p-4 pb-20 max-w-md mx-auto w-full">
-                <div style={T.tabBar}>
-                    {["search", "submit"].map(tab => (
-                        <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
-                            style={{
-                                flex: 1, padding: "10px 0", borderRadius: 9, border: "none",
-                                fontWeight: 700, fontSize: 14, cursor: "pointer", transition: "all 0.2s",
-                                ...(activeTab === tab ? T.tabActive : T.tabInactive),
-                            }}
-                        >
-                            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                        </button>
-                    ))}
-                </div>
+                {user && (
+                    <div style={T.tabBar}>
+                        {["search", "submit"].map(tab => (
+                            <button
+                                key={tab}
+                                onClick={() => setActiveTab(tab)}
+                                style={{
+                                    flex: 1, padding: "10px 0", borderRadius: 9, border: "none",
+                                    fontWeight: 700, fontSize: 14, cursor: "pointer", transition: "all 0.2s",
+                                    ...(activeTab === tab ? T.tabActive : T.tabInactive),
+                                }}
+                            >
+                                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                            </button>
+                        ))}
+                    </div>
+                )}
                 
                 {activeTab === 'search' ? (
                     <ExitSearch />
                 ) : (
-                    <ExitSubmit />
+                    user && <ExitSubmit />
                 )}
             </div>
            

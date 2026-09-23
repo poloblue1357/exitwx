@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { postExitData } from '../api/exitAPI'
+import { AuthContext } from '../context/AuthContext'
 
 function ExitSubmit() {
+    const { user } = useContext(AuthContext)
     const [visible, setVisible] = useState(false)
     const [fading, setFading] = useState(false)
     const [error, setError] = useState([])
@@ -38,6 +40,13 @@ function ExitSubmit() {
         setSuccess(false)
         setLoading(true)
        
+        // BLOCK TEST ACCOUNT FROM SUBMITTING
+        if (user && user.username === 'test') {
+            setError(['Test accounts cannot submit new locations'])
+            setLoading(false)
+            return;
+        }
+
         const errors = formValidation(formData);
 
         if (errors.length > 0) {
@@ -47,7 +56,13 @@ function ExitSubmit() {
         }
 
         try {
-            const response = await postExitData(formData)
+            // Add userId to form data
+            const dataWithUserId = {
+                ...formData,
+                userId: user?.id || null
+            }
+            
+            const response = await postExitData(dataWithUserId)
 
             if(response) {
                 setSuccess(true)

@@ -14,7 +14,8 @@ const exitSchema = new mongoose.Schema({
     email: { type: String, match: /.+\@.+\..+/ },
     zip: { type: String }, // changed to string for leading zeros
     state: { type: String },
-    source: { type: String } // scraped, user, manual
+    source: { type: String }, // scraped, user, manual
+    userId: { type: String, default: null } // who submitted this location
 
 }, { timestamps: true });
 

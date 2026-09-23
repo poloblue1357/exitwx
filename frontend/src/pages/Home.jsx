@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Search, Heart, Wind } from 'lucide-react';
+import { Search, Heart, Wind, LogIn } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ParachuteIcon from '../assets/parachute-parachutist-svgrepo-com.svg';
@@ -9,7 +9,7 @@ function Home() {
         <div className="h-screen flex flex-col bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500">
             <Header title="ExitWx" subtitle="Wind & Weather for Jumpers" />
 
-            <main className="flex-1 flex flex-col items-center justify-center p-4 overflow-auto">
+            <main className="flex-1 flex flex-col items-center justify-center p-4 overflow-auto pb-20">
                 <div className="text-center mb-12">
                     <div className="relative mb-6">
                         <div className="w-32 h-32 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-md rounded-full mx-auto flex items-center justify-center border-4 border-white/50 shadow-2xl">
@@ -26,7 +26,7 @@ function Home() {
                     </p>
                 </div>
 
-                <div className="space-y-4 w-full max-w-sm px-4">
+                <div className="space-y-4 w-full max-w-sm px-4 mb-0">
                     {/* Search Locations - Purple */}
                     <Link
                         to="/search"
@@ -68,6 +68,14 @@ function Home() {
                         </span>
                         <span className="text-2xl">→</span>
                     </Link>
+
+                    {/* Login/Register Link */}
+                    <div style={{ textAlign: 'center', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.querySelector('a').style.textDecoration = 'underline'} onMouseLeave={(e) => e.currentTarget.querySelector('a').style.textDecoration = 'none'}>
+                        <Link to="/login" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '18px', fontWeight: 500, padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                            Login / Register
+                            <LogIn size={20} />
+                        </Link>
+                    </div>
                 </div>
             </main>
 

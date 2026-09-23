@@ -114,7 +114,7 @@ function Search() {
                             />
                             <button
                                 onClick={handleSearchClick}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-3 rounded-xl transition-all shadow-lg"
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white p-3 rounded-xl transition-all shadow-lg"
                             >
                                 <SearchIcon className="w-6 h-6" />
                             </button>

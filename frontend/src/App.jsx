@@ -5,6 +5,7 @@ import Favorites from './pages/Favorites';
 import Exits from './pages/Exits';
 import Search from './pages/Search';
 import { AppProvider } from './context/AppContext';
+import { AuthProvider } from './context/AuthContext';
 import Forecast from "./components/Forecast"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
@@ -12,22 +13,24 @@ import Register from "./pages/Register"
 function App() {
 
   return (
-    <AppProvider>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500">
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/exits" element={<Exits />} />
-            <Route path="/forecast" element={<Forecast />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </main>
-      </div>
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500">
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/exits" element={<Exits />} />
+              <Route path="/forecast" element={<Forecast />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </main>
+        </div>
+      </AppProvider>
+    </AuthProvider>
   );
 }
 

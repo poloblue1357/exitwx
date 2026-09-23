@@ -107,48 +107,25 @@ function ExitSearch() {
     return (
         <div>
             {/* Search Input */}
-            <div className="relative">
-                <form onSubmit={handleSubmit}>
-                    <div style={{ position: 'relative', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}>
-                        <input
-                            style={{
-                                width: '100%',
-                                padding: '20px 64px 20px 20px',
-                                border: 0,
-                                borderRadius: '16px',
-                                fontSize: '16px',
-                                background: 'white',
-                                boxSizing: 'border-box',
-                                outline: 'none'
-                            }}
-                            className="focus:outline-none focus:ring-4 focus:ring-blue-300"
-                            placeholder="Search by DZ or Exit name"
-                            onChange={handleChange}
-                            value={searchInput}
-                        />
-                        <button
-                            type="submit"
-                            style={{
-                                position: 'absolute',
-                                right: '8px',
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                background: 'linear-gradient(to right, rgb(14, 165, 233), rgb(59, 130, 246))',
-                                border: 'none',
-                                color: 'white',
-                                padding: '12px',
-                                borderRadius: '12px',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-                            }}
-                        >
-                            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="8" stroke="white" strokeWidth="2" fill="none"/>
-                                <path d="m21 21-4.35-4.35" stroke="white" strokeWidth="2"/>
-                            </svg>
+            <div className="mb-6">
+                <div className="relative">
+                    <form onSubmit={handleSubmit}>
+                        <div className="relative shadow-xl">
+                            <input
+                                type="text"
+                                value={searchInput}
+                                onChange={handleChange}
+                                placeholder="Search by DZ or Exit name"
+                                className="w-full p-5 pr-14 border-0 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg bg-white shadow-lg"
+                            />
+                            <button
+                                type="submit"
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white p-3 rounded-xl transition-all shadow-lg"
+                            >
+                                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                    <circle cx="11" cy="11" r="8" stroke="white" strokeWidth="2" fill="none"/>
+                                    <path d="m21 21-4.35-4.35" stroke="white" strokeWidth="2"/>
+                                </svg>
                         </button>
                     </div>
                 </form>
@@ -217,6 +194,7 @@ function ExitSearch() {
 
                 </>
             )}
+            </div>
         </div>
     )
 }
