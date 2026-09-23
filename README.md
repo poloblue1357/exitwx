@@ -1,17 +1,16 @@
 # ExitWx - Weather App for Skydivers
 
-A full-stack weather app for skydivers and dropzone operators. 
-Check real-time conditions, forecasts, and save favorite locations for quick access.
+A full-stack weather application built for skydivers and dropzone operators to quickly access current conditions, forecasts, wind data, and location-specific weather information.
 
-*Built as a portfolio project to demonstrate full-stack development skills*
+ExitWx combines multiple external APIs with a custom database of skydiving locations and exits, providing a single interface for finding and evaluating weather conditions.
+
+Built as a portfolio project to demonstrate full-stack development, API integration, authentication, data persistence, and responsive application design.
 
 🔗 **[Live Demo](https://exitwx-fe.onrender.com/)** 
 
 ⚠️ Note: The backend may take a few seconds to respond on first load due to free hosting (cold start).
 
-📱 Mobile-first design — optimized for smaller screens, but fully functional on desktop.
-
-**Key Problem Solved**: Skydivers need quick access to detailed weather data for specific dropzones. This app combines location-based weather with a curated database of skydiving exits.
+📱 Mobile-first design with full desktop support.
 
 ## 📸 Screenshots
 
@@ -30,60 +29,56 @@ Check real-time conditions, forecasts, and save favorite locations for quick acc
 
 ## 🎯 Project Overview
 
-Provides wind, cloud, and forecast data for specific dropzones using a custom exit database and real-time weather APIs.
+ExitWx was built to make it easier for skydivers to find weather information for specific dropzones and exits. The application combines data from multiple external APIs with a custom location database and presents the information through a mobile-first interface.
 
 ## ✨ Key Features
 
 ### Authentication & User Management
-- **User Registration & Login**: Secure authentication with bcrypt password hashing (10 salt rounds)
-- **Protected Routes**: Submit locations only available to logged-in users
-- **Account Dropdown**: User profile info and logout functionality in header
-- **User Tracking**: Each exit submission tracks the user who added it
-- **Persistent Sessions**: User stays logged in after page refresh (localStorage)
+- User registration and login with bcrypt password hashing
+- User-specific API operations for submitting locations
+- Persistent authentication state across page refreshes
+- User-specific tracking for submitted locations
 
 ### Weather & Location Features
-- **Real-time Weather Data**: Current conditions and 5-day forecasts
-- **Dropzone Database**: Curated database of skydiving exits and dropzones
-- **Smart Autocomplete**: Fast, debounced autocomplete for location search
-- **Moon Phase Info**: Displays current moon phase and illumination percentage
-- **Tide Information**: Tidal extremes and marine weather data via Stormglass for coastal dropzones
-- **Wind Analysis**: Visual compass showing wind direction with detailed metrics
+- Real-time weather conditions and 5-day forecasts
+- Custom database of skydiving exits and dropzones
+- Debounced location autocomplete
+- Wind direction and weather metrics
+- Moon phase and illumination data
+- Tidal information for coastal locations
 
 ### User Experience
-- **Favorites System**: Save up to 10 favorite locations with persistent storage
-- **Persistent State**: Retains search results and user session across navigation
-- **Submit Custom Locations**: Authenticated users can add new dropzones to database
-- **Contact Form**: Email-based support via EmailJS integration
-- **Mobile-First Design**: Optimized for mobile with full desktop functionality
-- **Responsive Navigation**: Bottom tab bar on mobile, integrated header navigation
+- Favorites with persistent storage
+- User-submitted locations
+- Mobile-first responsive design
+- Responsive navigation
+- Contact form with EmailJS integration
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** - Hooks, Context API for global state
-- **React Router v6** - Client-side routing with protected routes
-- **Context API** - Global state management (Auth & App context)
-- **Tailwind CSS** - Utility-first styling with responsive design
-- **Vite** - Fast build tool and dev server
-- **Lucide React** - Icon library
-- **EmailJS** - Client-side email service integration
+- React 18 — Component-based UI and Hooks
+- React Router v6 — Client-side routing 
+- Context API — Authentication and application state
+- Tailwind CSS — Responsive styling
+- Vite — Build tooling and development server
+- Lucide React — UI icons
+- EmailJS — Contact form integration
 
 ### Backend
-- **Node.js & Express** - RESTful API server with middleware
-- **MongoDB & Mongoose** - Document database and ODM
-- **bcrypt** - Password hashing with salting (10 rounds)
-- **Zod** - Schema validation and TypeScript-like type checking
-- **Axios** - HTTP client for external API calls
-- **SunCalc** - Moon phase and celestial calculations
-- **CORS** - Cross-origin resource sharing
-- **Express Rate Limiting** - API request throttling
-- **Morgan** - HTTP request logging
-- **xml2js** - XML parsing for tide data
+- Node.js & Express — REST API and server-side application logic
+- MongoDB & Mongoose — Database and data modeling
+- bcrypt — Password hashing
+- Zod — Request and data validation
+- Axios — External API communication
+- SunCalc — Moon phase calculations
+- Morgan — HTTP request logging
+- xml2js — XML parsing
 
 ### External APIs
-- **OpenWeatherMap API** - Real-time weather and forecast data
-- **Geoapify API** - Geocoding, reverse geocoding, and location autocomplete
-- **Stormglass API** - Tidal extremes and marine weather for coastal locations
+- OpenWeatherMap — Weather and forecast data
+- Geoapify — Geocoding and location autocomplete
+- Stormglass — Tidal and marine weather data
 
 ## 🚀 How to Run Locally
 
@@ -94,6 +89,7 @@ Provides wind, cloud, and forecast data for specific dropzones using a custom ex
   - [OpenWeatherMap API Key](https://openweathermap.org/api)
   - [Geoapify API Key](https://www.geoapify.com/)
   - [Stormglass API Key](https://stormglass.io/)
+  - [EmailJS API Key](https://www.emailjs.com/)
 
 ### Backend Setup
 
@@ -138,33 +134,27 @@ The app will be available at `http://localhost:5173`
 
 ## 🔐 Authentication System
 
-### How It Works
+1. How It Works
+  - Registration
+  - Users register with an email, username, and password.
+  - Passwords are hashed with bcrypt before being stored.
+  - Input is validated before account creation.
+  - Database constraints prevent duplicate usernames and email addresses.
+2. Login
+  - Users authenticate with their username and password.
+  - Submitted passwords are verified against the stored bcrypt hash.
+  - Authentication state is persisted across page refreshes.
+3. User-Specific API Operations
+  - Authenticated users can submit new locations.
+  - Submitted locations are associated with the user ID provided by the application.
+  - User IDs are stored with submitted locations for user-specific data tracking.
 
-1. **Registration**: New users create an account with email, username, and password
-   - Passwords are hashed with bcrypt (10 salt rounds) before storage
-   - Validation ensures strong password requirements
-   - Duplicate email/username prevention via database unique constraints
-
-2. **Login**: Users authenticate with username and password
-   - Password compared against bcrypt hash
-   - JWT-like token created (could be enhanced to actual JWT)
-   - User data stored in localStorage for session persistence
-
-3. **Protected Routes**: 
-   - Exit submission only available to authenticated users
-   - Submit button hidden for non-logged-in users
-   - Test account ('test' username) is blocked from submissions
-
-4. **User Tracking**:
-   - Each exit submission records the `userId` of submitter
-   - Enables future features: edit own submissions, user profile page, moderation
-
-### Security Features
-
-- **Bcrypt Hashing**: Industry-standard password hashing with salt rounds
-- **Input Validation**: Zod schema validation on both frontend and backend
-- **Protected Components**: React Context prevents route access without auth
-- **Session Persistence**: localStorage maintains auth state across page refreshes
+## Security & Reliability
+- Password hashing: bcrypt
+- Input validation: Zod validation for API requests
+- User tracking: submitted locations are associated with a user ID
+- Database constraints: Unique username and email fields
+- Logging: Morgan request logging
 
 ## 📁 Project Structure
 
@@ -188,17 +178,28 @@ exitwx/
 
 ## ✅ Project Status
 
-**ExitWx is complete and ready for production!**
+ExitWx is a completed portfolio project and is currently deployed.
 
-This is a fully-featured full-stack application with:
-- Complete user authentication system
-- Real-time weather integration
-- Dropzone database with user submissions
-- Favorites and persistent state management
-- Contact form integration
-- Mobile-first responsive design
+The application demonstrates:
 
-All core features have been implemented and tested. The application is ready for deployment and use.
+- Full-stack React/Node.js development
+- REST API design and integration
+- MongoDB data persistence
+- User authentication and user-specific data tracking
+- Third-party API integration
+- Input validation
+- Responsive, mobile-first UI development
+- Deployment and environment configuration
+
+## 💡 Technical Highlights
+
+- Integrated and normalized data from multiple external APIs behind a single backend API.
+- Implemented debounced location autocomplete to reduce unnecessary API requests.
+- Associated user-submitted locations with the submitting user's ID
+- Designed MongoDB models for users, locations, and user-specific favorites.
+- Added request validation to improve application reliability.
+- Deployed the frontend and backend as separate Render services with environment-based configuration.
+
 
 ## 👤 Author
 
