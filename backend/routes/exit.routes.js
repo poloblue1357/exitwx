@@ -24,17 +24,27 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Add validateData(Location) right here before the async function
+
 router.post("/", validateData(Location), async (req, res) => {
-    console.log("Received data:", req.body);  // Log the incoming data
-    const { id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source } = req.body;
-    const location = new Exit({ id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source });
+    // Check if user is authenticated
+    if (!req.body.userId) {
+        return res.status(401).json({ error: "Authentication required to submit locations" });
+    }
+
+    // Block test account from submitting
+    if (req.body.username === 'test') {
+        return res.status(403).json({ error: "Test accounts cannot submit new locations" });
+    }
+
+    console.log("Received data:", req.body);
+    const { id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source, userId } = req.body;
+    const location = new Exit({ id, slug, telephone, website, city, country, lat, lon, name, email, zip, state, source, userId });
     
     try {
         const savedLocation = await location.save();
         res.status(201).json(savedLocation);
     } catch (err) {
-        console.error("Error saving location:", err);  // Log any error
+        console.error("Error saving location:", err);
         res.status(400).json({ message: err.message });
     }
 });
