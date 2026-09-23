@@ -9,74 +9,83 @@ function Home() {
         <div className="h-screen flex flex-col bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500">
             <Header title="ExitWx" subtitle="Wind & Weather for Jumpers" />
 
-            <main className="flex-1 flex flex-col items-center justify-center p-4 overflow-auto pb-20">
-                <div className="text-center mb-12">
-                    <div className="relative mb-6">
-                        <div className="w-32 h-32 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-md rounded-full mx-auto flex items-center justify-center border-4 border-white/50 shadow-2xl">
-                            <Wind className="w-16 h-16 text-white" strokeWidth={1.5} />
+            <main className="flex-1 flex flex-col items-center p-4 overflow-auto">
+                {/* Top spacer - takes 2 parts of the leftover space */}
+                <div className="flex-[2]" />
+
+                <div className="w-full flex flex-col items-center">
+                    <div className="text-center mb-12">
+                        <div className="relative mb-6">
+                            <div className="w-32 h-32 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-md rounded-full mx-auto flex items-center justify-center border-4 border-white/50 shadow-2xl">
+                                <Wind className="w-16 h-16 text-white" strokeWidth={1.5} />
+                            </div>
+                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 px-4 py-1 rounded-full text-xs font-bold shadow-lg">
+                                SKY REPORT
+                            </div>
                         </div>
-                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 px-4 py-1 rounded-full text-xs font-bold shadow-lg">
-                            SKY REPORT
-                        </div>
+
+                        <h2 className="text-4xl font-bold text-white mb-3">Ready to Jump?</h2>
+                        <p className="text-blue-100 max-w-sm mx-auto leading-relaxed text-base px-4">
+                            Check the weather at your favorite spots — made for sky and BASE jumpers.
+                        </p>
                     </div>
 
-                    <h2 className="text-4xl font-bold text-white mb-3">Ready to Jump?</h2>
-                    <p className="text-blue-100 max-w-sm mx-auto leading-relaxed text-base px-4">
-                        Check the weather at your favorite spots — made for sky and BASE jumpers.
-                    </p>
-                </div>
+                    <div className="space-y-4 w-full max-w-sm px-4">
+                        {/* Search Locations - Purple */}
+                        <Link
+                            to="/search"
+                            className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
+                        >
+                            <span className="flex items-center gap-3">
+                                <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
+                                    <Search className="w-5 h-5 text-white" />
+                                </div>
+                                Search Locations
+                            </span>
+                            <span className="text-2xl">→</span>
+                        </Link>
 
-                <div className="space-y-4 w-full max-w-sm px-4 mb-0">
-                    {/* Search Locations - Purple */}
-                    <Link
-                        to="/search"
-                        className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
-                    >
-                        <span className="flex items-center gap-3">
-                            <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
-                                <Search className="w-5 h-5 text-white" />
-                            </div>
-                            Search Locations
-                        </span>
-                        <span className="text-2xl">→</span>
-                    </Link>
+                        {/* DZs & Exits - Teal/Light Blue */}
+                        <Link
+                            to="/exits"
+                            className="w-full bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
+                        >
+                            <span className="flex items-center gap-3">
+                                <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
+                                    <img src={ParachuteIcon} alt="Parachute" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)' }} />
+                                </div>
+                                Dropzones & Exits
+                            </span>
+                            <span className="text-2xl">→</span>
+                        </Link>
 
-                    {/* DZs & Exits - Teal/Light Blue */}
-                    <Link
-                        to="/exits"
-                        className="w-full bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
-                    >
-                        <span className="flex items-center gap-3">
-                            <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
-                                <img src={ParachuteIcon} alt="Parachute" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)' }} />
-                            </div>
-                            Dropzones & Exits
-                        </span>
-                        <span className="text-2xl">→</span>
-                    </Link>
-
-                    {/* My Favorites - Pink/Rose */}
-                    <Link
-                        to="/favorites"
-                        className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
-                    >
-                        <span className="flex items-center gap-3">
-                            <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
-                                <Heart className="w-5 h-5 text-white" />
-                            </div>
-                            My Favorites
-                        </span>
-                        <span className="text-2xl">→</span>
-                    </Link>
-
-                    {/* Login/Register Link */}
-                    <div style={{ textAlign: 'center', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.querySelector('a').style.textDecoration = 'underline'} onMouseLeave={(e) => e.currentTarget.querySelector('a').style.textDecoration = 'none'}>
-                        <Link to="/login" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '18px', fontWeight: 500, padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                            Login / Register
-                            <LogIn size={20} />
+                        {/* My Favorites - Pink/Rose */}
+                        <Link
+                            to="/favorites"
+                            className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all hover:scale-105 flex items-center justify-between group"
+                        >
+                            <span className="flex items-center gap-3">
+                                <div style={{ background: "rgba(255,255,255,0.2)" }} className="p-2 rounded-lg flex">
+                                    <Heart className="w-5 h-5 text-white" />
+                                </div>
+                                My Favorites
+                            </span>
+                            <span className="text-2xl">→</span>
                         </Link>
                     </div>
+
+                    {/* Login - fixed gap under Favorites (mt-8 tighter, mt-12 looser) */}
+                    <Link
+                        to="/login"
+                        className="mt-10 flex items-center justify-center gap-2 text-lg font-medium text-white/80 hover:underline"
+                    >
+                        Login / Register
+                        <LogIn size={20} />
+                    </Link>
                 </div>
+
+                {/* Bottom spacer - takes 1 part of the leftover space */}
+                <div className="flex-1" />
             </main>
 
             <Footer />
