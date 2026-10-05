@@ -49,16 +49,33 @@ function TideInfo({ lat, lon, timezone }) {
 
             <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.6)", marginBottom: 8 }}>Next {tide.current.status} tide</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.following.type.charAt(0).toUpperCase() + tide.following.type.slice(1)}</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.next.type.charAt(0).toUpperCase() + tide.next.type.slice(1)}</div>
                 <div style={{ marginBottom: 6 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Time</div>
-                <div style={{ fontSize: 15, fontWeight: 600, color: "rgba(235,235,245,0.9)" }}>{tide.following.time}</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "rgba(235,235,245,0.9)" }}>{tide.next.time}</div>
                 </div>
                 <div>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Height</div>
-                <div style={{ fontSize: 15, fontWeight: 600, color: "#5AC8FA" }}>{tide.following.height} ft</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#5AC8FA" }}>{tide.next.height} ft</div>
                 </div>
             </div>
+
+            <div style={{ width: 1, background: "rgba(235,235,245,0.12)", alignSelf: "stretch" }} />
+
+            {tide.following && (
+                <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.6)", marginBottom: 8 }}>Then {tide.next.type === 'high' ? 'Falling' : 'Rising'} tide</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#5AC8FA", marginBottom: 10 }}>{tide.following.type.charAt(0).toUpperCase() + tide.following.type.slice(1)}</div>
+                <div style={{ marginBottom: 6 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Time</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: "rgba(235,235,245,0.9)" }}>{tide.following.time}</div>
+                </div>
+                <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, color: "rgba(235,235,245,0.4)", marginBottom: 2 }}>Height</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: "#5AC8FA" }}>{tide.following.height} ft</div>
+                </div>
+                </div>
+            )}
 
             </div>
         </div>
