@@ -38,22 +38,21 @@ export async function getWeatherByCoords(lat, lon, units = "imperial") {
             { params: { ...params, mode: 'json' } }
         )
         const fiveDayData = fiveDayResponse.data
-        // console.log(fiveDayData)
+        
         // Fetch current weather in XML format
         const xmlResponse = await axios.get(
             "https://api.openweathermap.org/data/2.5/weather",
             { params: { ...params, mode: "xml" } }
         )
         const xmlData = await parseStringPromise(xmlResponse.data)
-        // console.log(xmlData.current.city)
+        
         // Fetch current weather in JSON format (for wind gusts)
         const jsonResponse = await axios.get(
             "https://api.openweathermap.org/data/2.5/weather",
             { params }
         )
         const jsonData = jsonResponse.data
-        // console.log(jsonData)
-
+        
         // const { lat, lon } = jsonData.coord;
 
         // code to get country and state/province
